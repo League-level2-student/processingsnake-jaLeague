@@ -18,7 +18,7 @@ Segment (int x, int y) {
   public int getY() {return y;}
   public void setX(int x) { this.x = x; }
   public void setY(int y) { this.y = y; }
-  public void drawSegment() {}
+  public void drawSegment() {rect(x,y,10,10);}
 }
 
 
@@ -84,7 +84,7 @@ void drawFood() {
 
 void drawSnake() {
 
-  head.
+  head.drawSegment();
   //test your code
 }
 
@@ -99,15 +99,19 @@ void move() {
   switch(dir) {
   case "up":
     // move head up here 
+    head.setY(head.getY()-1);
     break;
   case "down":
     // move head down here 
+    head.setY(head.getY()+1);
     break;
   case "left":
    // figure it out 
+       head.setX(head.getX()-1);
     break;
   case "right":
     // mystery code goes here 
+    head.setX(head.getX()+1);
     break;
   }
   */
@@ -152,7 +156,7 @@ void collision() {
  **/
 
 //  1. Create and initialize an ArrayList of Segments. (This will be your snake tail!)
-Segment[] segments = new Segment[5];
+ArrayList<Segment> segments = new ArrayList<Segment>();
 
 // 2. Complete the missing parts of the manageTail method below.
 
@@ -162,7 +166,7 @@ void manageTail() {
 drawTail();
 checkTailCollision();
   // Add a new Segment to your ArrayList that has the same X and Y as the head of your snake.
-segments[
+segments.add(new Segment(head.x,head.y));
   // While the snake size is greater than your food, remove the first Segment in your snake.
 }
 
